@@ -12,6 +12,14 @@
         <servlet-name>Inscription</servlet-name>
         <servlet-class>com.mycompagnie.nppwebmaven.servlet.Inscription</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>com.mycompagnie.nppwebmaven.servlet.Connexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>com.mycompagnie.nppwebmaven.servlet.Deconnexion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>connexion</servlet-name>
         <url-pattern>/connexion</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/Inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/Connexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/Deconnexion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>50</session-timeout>
