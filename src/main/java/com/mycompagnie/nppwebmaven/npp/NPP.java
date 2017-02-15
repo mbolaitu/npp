@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package npp;
+package com.mycompagnie.nppwebmaven.npp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jdbc.Connexion;
-import mapping.Login;
+import com.mycompagnie.nppwebmaven.jdbc.Connexion;
+import com.mycompagnie.nppwebmaven.mapping.Login;
 
 /**
  *

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mapping;
+package com.mycompagnie.nppwebmaven.mapping;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jdbc.Connexion;
+import com.mycompagnie.nppwebmaven.jdbc.Connexion;
 
 /**
  *

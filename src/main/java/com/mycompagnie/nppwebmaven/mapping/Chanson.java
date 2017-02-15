@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mapping;
+package com.mycompagnie.nppwebmaven.mapping;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
-import jdbc.Connexion;
+import com.mycompagnie.nppwebmaven.jdbc.Connexion;
 
 /**
  *

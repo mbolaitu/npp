@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metier;
+package com.mycompagnie.nppwebmaven.metier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import jdbc.Connexion;
-import mapping.Gain;
-import mapping.Login;
-import mapping.Utilisateur;
+import com.mycompagnie.nppwebmaven.jdbc.Connexion;
+import com.mycompagnie.nppwebmaven.mapping.Gain;
+import com.mycompagnie.nppwebmaven.mapping.Login;
+import com.mycompagnie.nppwebmaven.mapping.Utilisateur;
 
 /**
  *
