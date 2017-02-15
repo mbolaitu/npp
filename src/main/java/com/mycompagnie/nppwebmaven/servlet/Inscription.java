@@ -129,7 +129,7 @@ public class Inscription extends HttpServlet {
                 
         }
         } catch(Exception e) {
-            response.sendRedirect("inscription.html?error="+e.getMessage());
+            request.getRequestDispatcher("inscription.html?error="+e.getMessage()).forward(request, response);
         }
     }
 
@@ -206,7 +206,7 @@ public class Inscription extends HttpServlet {
                 
         }
         } catch(Exception e) {
-            response.sendRedirect("inscription.html?error="+e.getMessage());
+            request.getRequestDispatcher("inscription.html?error="+e.getMessage()).forward(request, response);
         }
             
         
