@@ -4,10 +4,10 @@
     Author     : mbola
 --%>
 
-<%@page import="mapping.Chanson"%>
+<%@page import="com.mycompagnie.nppwebmaven.mapping.Chanson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="mapping.Utilisateur" %>
+<%@page import="com.mycompagnie.nppwebmaven.mapping.Utilisateur" %>
 <% 
     System.out.println(request.getSession().getAttribute("id_user"));
     if(request.getSession().getAttribute("id_user")==null) {

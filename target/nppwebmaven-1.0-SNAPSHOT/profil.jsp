@@ -6,7 +6,7 @@
 
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="mapping.Utilisateur" %>
+<%@page import="com.mycompagnie.nppwebmaven.mapping.Utilisateur" %>
 <!DOCTYPE html>
 <html>
     <head>
