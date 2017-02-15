@@ -31,6 +31,12 @@ public class deconnexion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
+        
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "86400");
         try  {
             request.getSession().invalidate();
             response.sendRedirect("index.html");
