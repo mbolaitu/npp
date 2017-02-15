@@ -129,7 +129,9 @@ public class Inscription extends HttpServlet {
                 
         }
         } catch(Exception e) {
-            request.getRequestDispatcher("inscription.jsp?error="+e.getMessage()).forward(request, response);
+            request.setAttribute("error", e.getMessage());
+            response.getWriter().print(e.getMessage());
+            //request.getRequestDispatcher("inscription.jsp").forward(request, response);
         }
     }
 
@@ -153,7 +155,7 @@ public class Inscription extends HttpServlet {
         
         // debut micreer anilay dossier asina anilay fichier raha tsy misy
         String appPath = request.getServletContext().getRealPath("");
-        String savePath = appPath + File.separator + UPLOAD_DIRECTORY;
+        String savePath = appPath + UPLOAD_DIRECTORY;
         // fin micreer anilay dossier asina anilay fichier raha tsy misy
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
@@ -206,7 +208,9 @@ public class Inscription extends HttpServlet {
                 
         }
         } catch(Exception e) {
-            request.getRequestDispatcher("inscription.jsp?error="+e.getMessage()).forward(request, response);
+            request.setAttribute("error", e.getMessage());
+            response.getWriter().print(e.getMessage());
+            //request.getRequestDispatcher("inscription.jsp").forward(request, response);
         }
             
         
