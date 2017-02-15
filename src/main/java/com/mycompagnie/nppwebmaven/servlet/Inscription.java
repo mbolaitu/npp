@@ -15,13 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.mycompagnie.nppwebmaven.jdbc.Connexion;
 import com.mycompagnie.nppwebmaven.mapping.Login;
 import com.mycompagnie.nppwebmaven.mapping.Utilisateur;
+import java.io.File;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author mbola
  */
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+                 maxFileSize=1024*1024*10,      // 10MB
+                 maxRequestSize=1024*1024*50)   // 50MB
 public class Inscription extends HttpServlet {
 
+    private final String UPLOAD_DIRECTORY = "upload";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,6 +42,17 @@ public class Inscription extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+    }
+    
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length()-1);
+            }
+        }
+        return "";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,13 +74,32 @@ public class Inscription extends HttpServlet {
         response.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
         response.addHeader("Access-Control-Max-Age", "86400");
         
+        // debut micreer anilay dossier asina anilay fichier raha tsy misy
+        String appPath = request.getServletContext().getRealPath("");
+        String savePath = appPath + File.separator + UPLOAD_DIRECTORY;
+        // fin micreer anilay dossier asina anilay fichier raha tsy misy
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        Part filePart = request.getPart("photo");
+		//maka anaranle fichier
+        String fileName = extractFileName(filePart);
+        fileName = new File(fileName).getName();
+		//
+		//mienregistre anilay fichier
+        filePart.write(savePath+File.separator+fileName);
+		//
+		
+		//url = upload/fileName
+        String url_photo = "upload/"+fileName;
+        
         String name = request.getParameter("name");
         String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String confPassword = request.getParameter("confpassword");
         String email = request.getParameter("email");
-        String photo = request.getParameter("photo");
         Connection c = null;
         try {
             c = Connexion.getConnection();
@@ -70,7 +107,7 @@ public class Inscription extends HttpServlet {
                 long idu = Utilisateur.getLastIndex();
                 long idl = Login.getLastIndex();
                 Utilisateur u = new Utilisateur(idu,lastname,name);
-                Login l = new Login(idl,idu , username, password, email, photo);
+                Login l = new Login(idl,idu , username, password, email, url_photo);
                 if(u.setUtilisateur(c)) {
                     if(l.setLogin(c)) {
                         c.commit();

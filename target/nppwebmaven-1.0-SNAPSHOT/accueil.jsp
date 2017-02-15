@@ -66,7 +66,7 @@
                                         long id = (long)request.getSession().getAttribute("id_user");
                                         String[] rep = Utilisateur.getInfo(id); %>
                                         <div class="col-md-4">
-                                            <img src="<%= "img/"+ rep[0] %>" class="img-thumbnail" alt="" width="204" height="136">
+                                            <img src="<%= "upload/"+ rep[0] %>" class="img-thumbnail" alt="" width="204" height="136">
                                         </div>
                                         <div class="col-md-8">
                                             

@@ -25,14 +25,14 @@ and open the template in the editor.
         <div class="login">
             <h1>N'OUBLIEZ PAS LES PAROLES</h1>
             <h1>Inscription</h1>
-            <form method="post" action="Inscription">
+            <form method="post" action="Inscription" enctype="multipart/form-data">
                 <input type="text" name="name" placeholder="Nom" />
                 <input type="text" name="lastname" placeholder="Prénom"/>
                 <input type="text" name="username" placeholder="Nom d'utilisateur"/>
                 <input type="password" name="password" placeholder="Mot de passe" required="required" />
                 <input type="password" name="confpassword" placeholder="Confirmation du mot de passe" required="required" />
                 <input type="email" name="email" placeholder="Email" required="required" />
-                <input type="text" name="photo" placeholder="url photo" required="required" />
+                <input type="file" name="photo" placeholder="url photo" required="required" />
                 <button type="submit" class="btn btn-primary btn-block btn-large">Enregistrer</button>
                 <a href="index.html" style="color: white;">Page de connexion</a>
             </form>
