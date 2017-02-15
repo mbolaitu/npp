@@ -14,7 +14,9 @@ public class Connexion
         String user = dbUri.getUserInfo().split(":")[0];
         String pass = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ":" + dbUri.getPort() + dbUri.getPath();
-        return DriverManager.getConnection(dbUrl,user,pass);
+        connex =DriverManager.getConnection(dbUrl,user,pass);
+        connex.setAutoCommit(false);
+        return connex;
     }
    
 }
