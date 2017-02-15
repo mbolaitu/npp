@@ -1,1 +1,1 @@
-web: java -jar target/endorsed/webapp-runner.jar --port 5000 target/*.war
+web: java -jar target/endorsed/webapp-runner.jar --port $PORT target/*.war
