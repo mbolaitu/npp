@@ -151,13 +151,32 @@ public class Inscription extends HttpServlet {
         response.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
         response.addHeader("Access-Control-Max-Age", "86400");
         
+        // debut micreer anilay dossier asina anilay fichier raha tsy misy
+        String appPath = request.getServletContext().getRealPath("");
+        String savePath = appPath + File.separator + UPLOAD_DIRECTORY;
+        // fin micreer anilay dossier asina anilay fichier raha tsy misy
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        Part filePart = request.getPart("photo");
+		//maka anaranle fichier
+        String fileName = extractFileName(filePart);
+        fileName = new File(fileName).getName();
+		//
+		//mienregistre anilay fichier
+        filePart.write(savePath+File.separator+fileName);
+		//
+		
+		//url = upload/fileName
+        String url_photo = "upload/"+fileName;
+        
         String name = request.getParameter("name");
         String lastname = request.getParameter("lastname");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String confPassword = request.getParameter("confpassword");
         String email = request.getParameter("email");
-        String photo = request.getParameter("photo");
         Connection c = null;
         try {
             c = Connexion.getConnection();
@@ -165,7 +184,7 @@ public class Inscription extends HttpServlet {
                 long idu = Utilisateur.getLastIndex();
                 long idl = Login.getLastIndex();
                 Utilisateur u = new Utilisateur(idu,lastname,name);
-                Login l = new Login(idl,idu , username, password, email, photo);
+                Login l = new Login(idl,idu , username, password, email, url_photo);
                 if(u.setUtilisateur(c)) {
                     if(l.setLogin(c)) {
                         c.commit();
