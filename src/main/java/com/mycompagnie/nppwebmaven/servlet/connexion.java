@@ -32,6 +32,21 @@ public class connexion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("application/json;charset=UTF-8");
         
         response.addHeader("Access-Control-Allow-Origin", "*");
@@ -55,21 +70,6 @@ public class connexion extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -81,7 +81,27 @@ public class connexion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("application/json;charset=UTF-8");
+        
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "86400");
+        try  {
+            String user = request.getParameter("u");
+            String pass = request.getParameter("p");
+            Login log = Login.getLogin(user, pass);
+            if(log!=null) {
+                response.sendRedirect("accueil.jsp");
+                HttpSession session = request.getSession(true);
+                session.setAttribute("id_user", log.getId_utilisateur());
+            }
+            if(log==null) {
+                response.sendRedirect("index.html");
+            }
+        }catch(Exception ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
