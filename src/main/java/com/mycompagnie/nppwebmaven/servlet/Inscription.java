@@ -118,18 +118,18 @@ public class Inscription extends HttpServlet {
                     else {
                         c.rollback();
                         c.close();
-                        response.sendRedirect("inscription.html?error=in");
+                        response.sendRedirect("inscription.jsp?error=in");
                     }
                 }
                 else {
                     c.rollback();
                     c.close();
-                    response.sendRedirect("inscription.html?error=in");
+                    response.sendRedirect("inscription.jsp?error=in");
                 }
                 
         }
         } catch(Exception e) {
-            request.getRequestDispatcher("inscription.html?error="+e.getMessage()).forward(request, response);
+            request.getRequestDispatcher("inscription.jsp?error="+e.getMessage()).forward(request, response);
         }
     }
 
@@ -195,18 +195,18 @@ public class Inscription extends HttpServlet {
                     else {
                         c.rollback();
                         c.close();
-                        response.sendRedirect("inscription.html?error=in");
+                        response.sendRedirect("inscription.jsp?error=in");
                     }
                 }
                 else {
                     c.rollback();
                     c.close();
-                    response.sendRedirect("inscription.html?error=in");
+                    response.sendRedirect("inscription.jsp?error=in");
                 }
                 
         }
         } catch(Exception e) {
-            request.getRequestDispatcher("inscription.html?error="+e.getMessage()).forward(request, response);
+            request.getRequestDispatcher("inscription.jsp?error="+e.getMessage()).forward(request, response);
         }
             
         
