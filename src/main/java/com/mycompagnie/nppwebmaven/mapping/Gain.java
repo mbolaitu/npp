@@ -99,5 +99,12 @@ public class Gain {
         }
         return reponse+1;
     }
+    public static boolean deleteGainById(long id) throws Exception {
+        Connection c = Connexion.getConnection();
+        int rs = c.createStatement().executeUpdate("delete from gain where id_gain="+id);
+        c.commit();
+        c.close();
+        return rs>0;
+    }
     
 }

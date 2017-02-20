@@ -18,5 +18,16 @@ public class Connexion
         connex.setAutoCommit(false);
         return connex;
     }
+    
+    /*public static Connection getConnection() throws Exception
+    {
+        if(Connexion.connex==null || (Connexion.connex!=null && Connexion.connex.isClosed()))
+        {
+            Class.forName("org.postgresql.Driver");
+            connex = DriverManager.getConnection("jdbc:postgresql://localhost:5432/npp", "postgres", "itu");
+            connex.setAutoCommit(false);
+        }
+        return Connexion.connex;
+    }*/
    
 }
